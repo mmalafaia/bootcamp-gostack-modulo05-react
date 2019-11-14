@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import api from '../../services/api';
 
 import Container from '../../components/Container';
-import { Loading, Owner, IssueList } from './styles';
+import { Loading, Owner, IssueList, Label } from './styles';
 
 export default class Repository extends Component {
   static propTypes = {
@@ -65,9 +65,17 @@ export default class Repository extends Component {
               <img src={issue.user.avatar_url} alt={issue.user.login} />
               <div>
                 <strong>
-                  <a href={issue.html_url}>{issue.title}</a>
+                  <a
+                    href={issue.html_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {issue.title}
+                  </a>
                   {issue.labels.map(label => (
-                    <span key={String(label.id)}>{label.name}</span>
+                    <Label background={label.color} key={String(label.id)}>
+                      {label.name}
+                    </Label>
                   ))}
                 </strong>
                 <p>{issue.user.login}</p>
