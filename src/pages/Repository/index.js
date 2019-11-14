@@ -47,7 +47,7 @@ export default class Repository extends Component {
     const { repository, issues, loading } = this.state;
 
     if (loading) {
-      return <Loading>Carregando</Loading>;
+      return <Loading>Carregando...</Loading>;
     }
 
     return (
@@ -62,7 +62,7 @@ export default class Repository extends Component {
         <IssueList>
           {issues.map(issue => (
             <li key={String(issues.id)}>
-              <img src={issue.user.avatar_url} alt={issue.user.login}></img>
+              <img src={issue.user.avatar_url} alt={issue.user.login} />
               <div>
                 <strong>
                   <a href={issue.html_url}>{issue.title}</a>
